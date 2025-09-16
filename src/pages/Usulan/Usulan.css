@@ -1,0 +1,300 @@
+/* src/pages/Usulan/Usulan.css */
+
+:root {
+  --bg-page: #f3f4f6;
+  --bg-content: #ffffff;
+  --border: #e5e7eb;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #3182ce;
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --verified-bg: rgba(37, 99, 235, 0.1);
+  --pending-bg: rgba(217, 119, 6, 0.1);
+  --rejected-bg: rgba(220, 38, 38, 0.1);
+}
+
+.usulan-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-page);
+}
+
+.usulan-page .usulan-content {
+  flex: 1;
+  background: var(--bg-content);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.usulan-page .usulan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.usulan-page .usulan-header h1 {
+  margin: 0;
+  color: var(--text-dark);
+  font-size: 1.5rem;
+}
+
+.usulan-page .usulan-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.usulan-page .usulan-actions .filter-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.usulan-page .usulan-actions .filter-group label {
+  margin: 0;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.usulan-page .usulan-actions .filter-group select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-content);
+  color: var(--text-dark);
+  transition: border-color 0.2s;
+}
+
+.usulan-page .usulan-actions .filter-group select:hover,
+.usulan-page .usulan-actions .filter-group select:focus {
+  border-color: var(--accent);
+}
+
+.usulan-page .btn-new {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.usulan-page .btn-new:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.usulan-page .usulan-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.usulan-page .usulan-table th,
+.usulan-page .usulan-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dark);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.usulan-page .usulan-table tbody tr:nth-child(even) {
+  background: var(--bg-page);
+}
+
+.usulan-page .usulan-table tbody tr:hover {
+  background: rgba(49, 130, 206, 0.05);
+}
+
+.usulan-page .usulan-table th:nth-child(3),
+.usulan-page .usulan-table td:nth-child(3),
+.usulan-page .usulan-table th:nth-child(4),
+.usulan-page .usulan-table td:nth-child(4),
+.usulan-page .usulan-table th:nth-child(5),
+.usulan-page .usulan-table td:nth-child(5) {
+  text-align: center;
+}
+
+.usulan-page .usulan-table td.status-cell-U {
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+}
+
+.usulan-page .usulan-table td.status-menunggu {
+  background-color: var(--pending-bg);
+  color: var(--warning);
+}
+
+.usulan-page .usulan-table td.status-terverifikasi {
+  background-color: var(--verified-bg);
+  color: var(--success);
+}
+
+.usulan-page .usulan-table td.status-ditolak {
+  background-color: var(--rejected-bg);
+  color: var(--error);
+}
+
+.usulan-page .actions-cell {
+  text-align: center;
+}
+
+.usulan-page .actions-cell .icon-view,
+.usulan-page .actions-cell .icon-delete {
+  display: inline-block;
+  margin: 0 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.usulan-page .actions-cell .icon-view {
+  color: var(--accent);
+}
+
+.usulan-page .actions-cell .icon-delete {
+  color: var(--error);
+}
+
+.usulan-page .actions-cell .icon-view:hover,
+.usulan-page .actions-cell .icon-delete:hover {
+  transform: scale(1.2);
+}
+
+.usulan-page .no-data {
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .usulan-page .usulan-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .usulan-page .usulan-actions {
+    flex-wrap: wrap;
+  }
+
+  .usulan-page .usulan-table th,
+  .usulan-page .usulan-table td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* ========================= */
+/* Modal Confirmation Styles */
+/* ========================= */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: var(--bg-content);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-title {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  color: var(--text-dark);
+}
+
+.modal-body {
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Sama rata ukuran dan bentuk tombol Batal & Hapus */
+.modal-footer .btn-cancel,
+.modal-footer .btn-confirm {
+  flex: none;
+  width: 90px;
+  padding: 0.75rem 0;
+  font-size: 0.95rem;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+/* Tombol “Batal” */
+.modal-footer .btn-cancel {
+  background: var(--border);
+  color: var(--text-dark);
+}
+
+.modal-footer .btn-cancel:hover {
+  background: var(--text-muted);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Tombol “Hapus” */
+.modal-footer .btn-confirm {
+  background: var(--error);
+  color: #fff;
+}
+
+.modal-footer .btn-confirm:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .modal-box {
+    padding: 1rem;
+  }
+  .modal-title {
+    font-size: 1.1rem;
+  }
+  .modal-body {
+    font-size: 0.95rem;
+  }
+  .modal-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .modal-footer .btn-cancel,
+  .modal-footer .btn-confirm {
+    flex: none;
+    width: 100%;
+  }
+}

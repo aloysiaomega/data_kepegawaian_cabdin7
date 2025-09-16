@@ -1,0 +1,359 @@
+/* src/pages/Dokumen/Dokumen.css */
+
+:root {
+  --bg-page: #f3f4f6;
+  --bg-content: #ffffff;
+  --border: #e5e7eb;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #3182ce;
+  --pending-orange: #d97706;
+  --teaching-blue: #2563eb;
+  --error: #dc2626;
+}
+
+/* ── LAYOUT ── */
+.dokumen-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-page);
+}
+
+.dokumen-content {
+  flex: 1;
+  background: var(--bg-content);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* ── HEADER & TABS ── */
+.dokumen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dokumen-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--text-dark);
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+}
+
+.tabs button {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.tabs button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s, left 0.3s;
+  transform-origin: center;
+}
+
+.tabs button:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.tabs button:hover::after {
+  left: 25%;
+  width: 50%;
+}
+
+.tabs button.active {
+  color: var(--text-dark);
+}
+
+.tabs button.active::after {
+  left: 0;
+  width: 100%;
+}
+
+/* ── PROPOSE BUTTON ── */
+.btn-propose {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-propose:hover {
+  background: var(--teaching-blue);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ── FILTERS & SEARCH ── */
+.dokumen-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.filter-group label {
+  margin-bottom: 0.25rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.filter-group select {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-content);
+  color: var(--text-dark);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.filter-group select:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.search-group {
+  flex: 1;
+}
+
+.search-input {
+  position: relative;
+}
+
+.search-input svg {
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.search-input input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-content);
+  color: var(--text-dark);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.search-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input input:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.search-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+/* ── TABLE ── */
+.dokumen-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.dokumen-table th,
+.dokumen-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dark);
+  vertical-align: middle;   /* pastikan cell & header sama tinggi */
+  white-space: nowrap;
+}
+
+.dokumen-table th {
+  background: var(--bg-content);
+}
+
+.dokumen-table tbody tr:nth-child(even) {
+  background: var(--bg-page);
+}
+
+.dokumen-table tbody tr:hover {
+  background: rgba(49, 130, 206, 0.05);
+}
+
+/* Center kolom Status (4) dan Aksi (5) */
+.dokumen-table th:nth-child(3),
+.dokumen-table td:nth-child(3),
+.dokumen-table th:nth-child(4),
+.dokumen-table td:nth-child(4),
+.dokumen-table th:nth-child(5),
+.dokumen-table td:nth-child(5) {
+  text-align: center;
+}
+
+.dokumen-table td:nth-child(4) {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.dokumen-table td.status-menunggu {
+  background-color: var(--pending-bg);
+  color: var(--warning);
+}
+
+.dokumen-table td.status-terverifikasi {
+  background-color: var(--verified-bg);
+  color: var(--success);
+}
+
+.dokumen-table td.status-ditolak {
+  background-color: var(--rejected-bg);
+  color: var(--error);
+}
+
+.dokumen-table td.status-cell {
+  padding: 0.75rem 1rem;
+  border-radius: 0;   
+}
+
+.status-cell {
+  display: inline-block;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 4px;
+  background: none;
+}
+
+.status-terverifikasi {
+  color: var(--teaching-blue);
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+.status-menunggu {
+  color: var(--pending-orange);
+  background-color: rgba(217, 119, 6, 0.1);
+}
+
+.status-ditolak {
+  color: var(--error);
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+/* ── ACTION ICONS ── */
+.dokumen-table td.actions-cell {
+  /* jangan ubah display: tetap table-cell */
+  text-align: center;
+  padding: 0.75rem 1rem;
+}
+
+.dokumen-table td.actions-cell .icon-view,
+.dokumen-table td.actions-cell .icon-delete {
+  display: inline-block;
+  margin: 0 0.25rem;
+  font-size: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* Preview icon biru, Delete icon merah */
+.dokumen-table td.actions-cell .icon-view {
+  color: var(--teaching-blue);
+}
+
+.dokumen-table td.actions-cell .icon-delete {
+  color: var(--error);
+}
+
+.dokumen-table td.actions-cell .icon-view:hover,
+.dokumen-table td.actions-cell .icon-delete:hover {
+  transform: scale(1.2);
+}
+
+/* ── NO DATA ROW ── */
+.no-data {
+  text-align: center;
+  padding: 1rem;
+  color: var(--text-muted);
+}
+
+/* ── UPLOAD PLACEHOLDER ── */
+.upload-form {
+  margin-top: 2rem;
+}
+
+.upload-placeholder {
+  padding: 2rem;
+  border: 2px dashed var(--border);
+  border-radius: 6px;
+  text-align: center;
+  color: var(--text-muted);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-placeholder:hover {
+  border-color: var(--accent);
+  background: rgba(49, 130, 206, 0.03);
+}
+
+/* ── TAB PANEL ANIMATIONS ── */
+.tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.tab-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .dokumen-filters {
+    flex-direction: column;
+  }
+  .dokumen-table th,
+  .dokumen-table td {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+  .dokumen-table td.actions-cell .icon-view,
+  .dokumen-table td.actions-cell .icon-delete {
+    font-size: 1rem;
+    margin: 0 0.25rem;
+  }
+}

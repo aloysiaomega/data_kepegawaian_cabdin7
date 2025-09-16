@@ -1,0 +1,188 @@
+body::before,
+body::after {
+  display: none !important;
+  background: none !important;
+}
+
+/* Dashboard.css */
+:root {
+  --bg-page: #f3f4f6;
+  --bg-content: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #4b5563;
+  --accent: #3182ce;
+  --certified-purple: #805ad5;
+  --pending-orange: #d97706;
+  --teaching-blue: #2563eb;
+  --retirement-navy: #1e40af;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg-page);
+}
+
+/* main content area */
+.dashboard-content {
+  flex: 1;
+  background: var(--bg-content);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-info h1 {
+  font-size: 1.75rem;
+  color: var(--text-dark);
+}
+
+.header-info h2 {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.btn-propose {
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-propose:hover {
+  background: #2c5282;
+}
+
+/* metric cards */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #f1f1f1;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #a3a3a3;
+}
+
+.card h3 {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.card-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card--certified .card-value {
+  color: var(--certified-purple);
+}
+
+.card--pending .card-value {
+  color: var(--pending-orange);
+}
+
+.card--teaching .card-value {
+  color: var(--teaching-blue);
+}
+
+.card--retirement .card-value {
+  color: var(--retirement-navy);
+}
+
+/* activities */
+.activities h3 {
+  font-size: 1.25rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.activities ul {
+  list-style: none;
+}
+
+.activity {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.activity-icon {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.activity-text {
+  flex: 1;
+}
+
+.activity-text span {
+  display: block;
+  color: var(--text-dark);
+}
+
+.activity-text small {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.activity-status {
+  font-weight: 600;
+}
+
+.activity--pending .activity-status {
+  color: var(--pending-orange);
+}
+
+.activity--approved .activity-status {
+  color: var(--retirement-navy);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

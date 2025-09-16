@@ -15,19 +15,9 @@ body {
   overflow: hidden;
 }
 
-/* Terapkan gambar latar di seluruh layar */
 body {
   background: url('../../assets/images/bg1.jpg') center/cover no-repeat fixed;
   position: relative;
-}
-
-/* Overlay gelap penuh layar */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.718);
-  z-index: 1;
 }
 
 .login-page {
@@ -38,7 +28,6 @@ body::before {
   z-index: 2; /* di atas overlay */
 }
 
-/* ---- LEFT PANEL: Info ---- */
 .login-info {
   flex: 1.2;
   display: flex;
