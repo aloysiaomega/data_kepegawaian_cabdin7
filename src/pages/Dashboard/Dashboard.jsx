@@ -45,7 +45,7 @@ export default function Dashboard() {
             </div>
             <h3>Jumlah jam mengajar</h3>
             <p className="card-value">
-              24 jam/Minggu Terpenuhi dari 24 jam wajib
+              24 jam/Minggu Terpenuhi dari 500 (inget inget) jam wajib
             </p>
           </div>
           <div className="card card--retirement">
