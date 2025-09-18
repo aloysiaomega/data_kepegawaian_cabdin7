@@ -6,7 +6,6 @@ import AjukanUsulan from './AjukanUsulan'
 import './Usulan.css'
 
 export default function Usulan() {
-  // generate 50 dummy data
   const jenisList = [
     'Perubahan Golongan',
     'Penambahan Jam Mengajar',
@@ -46,7 +45,7 @@ export default function Usulan() {
   // unique pilihan filter jenis
   const jenisOptions = Array.from(new Set(initialUsulan.map(u => u.jenis)))
 
-  // handlers delete
+  // hapus
   const openDeleteModal = u => { setToDelete(u); setShowDeleteModal(true) }
   const closeDeleteModal = () => { setToDelete(null); setShowDeleteModal(false) }
   const confirmDelete = () => {
@@ -54,11 +53,11 @@ export default function Usulan() {
     closeDeleteModal()
   }
 
-  // handlers detail
+  // detail
   const openDetailModal = u => { setDetailUsulan(u); setShowDetailModal(true) }
   const closeDetailModal = () => { setDetailUsulan(null); setShowDetailModal(false) }
 
-  // handlers ajukan baru
+  // ajukan usulan baru
   const openAjukanModal = () => setShowAjukanModal(true)
   const closeAjukanModal = () => setShowAjukanModal(false)
   const handleSubmitNew = ({ jenis, deskripsi, prioritas }) => {
@@ -81,12 +80,12 @@ export default function Usulan() {
     closeAjukanModal()
   }
 
-  // apply filter
+  // filter
   const filtered = usulanList
     .filter(u => (jenisFilter ? u.jenis === jenisFilter : true))
     .filter(u => (statusFilter ? u.status === statusFilter : true))
 
-  // pagination calculations
+  // pagination kalkulasi
   const totalPages = Math.ceil(filtered.length / itemsPerPage)
   const startIdx = (currentPage - 1) * itemsPerPage
   const currentItems = filtered.slice(startIdx, startIdx + itemsPerPage)
@@ -186,7 +185,7 @@ export default function Usulan() {
         </div>
       </main>
 
-      {/* Delete Confirmation */}
+      {/* kondirmasi hapus */}
       {showDeleteModal && (
         <div className="modal-overlay" onClick={closeDeleteModal}>
           <div className="modal-box" onClick={e => e.stopPropagation()}>
