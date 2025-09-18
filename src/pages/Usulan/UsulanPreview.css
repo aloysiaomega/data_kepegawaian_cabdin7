@@ -1,0 +1,222 @@
+/*===============================
+=      Variabel Warna Umum      =
+===============================*/
+:root {
+  --bg-page: #f3f4f6;
+  --bg-content: #ffffff;
+  --border: #e5e7eb;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --accent: #3182ce;
+}
+
+/*===============================
+=       Overlay & Container     =
+===============================*/
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.detail-box {
+  background: var(--bg-content);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/*===============================
+=         Header Sticky         =
+===============================*/
+.detail-header {
+  flex: none;
+  position: relative;
+  padding: 1.5rem 2rem 0.5rem;
+  background: var(--bg-content);
+  z-index: 1;
+}
+
+.btn-close-detail {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.btn-close-detail:hover {
+  color: var(--text-dark);
+}
+
+.detail-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+/*===============================
+=     Scrollable Content Area   =
+===============================*/
+.detail-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 2rem 0;
+}
+
+/* Custom scrollbar di dalam kotak */
+.detail-content::-webkit-scrollbar {
+  width: 8px;
+}
+.detail-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.detail-content::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+/* Firefox */
+@supports (scrollbar-color: auto) {
+  .detail-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+}
+
+/*===============================
+=     Section: Informasi        =
+===============================*/
+.detail-section.info h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.detail-section.info .info-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.detail-section.info .info-item {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+.detail-section.info .label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  min-width: 140px;
+}
+.detail-section.info .value {
+  color: var(--text-dark);
+  font-weight: 500;
+  text-align: left;
+}
+
+/*===============================
+=   Section: Deskripsi Usulan   =
+===============================*/
+.detail-section.desc {
+  margin-top: 2rem;
+}
+.detail-section.desc h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.desc-box {
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/*===============================
+=   Section: Riwayat Status     =
+===============================*/
+.detail-section.history {
+  margin-top: 2rem;
+}
+.detail-section.history h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+.history-list {
+  list-style: disc inside;
+  margin: 0;
+  padding-left: 1rem;
+}
+.history-list li {
+  margin-bottom: 1rem;
+}
+.history-list .hist-text {
+  display: block;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+}
+.history-list .hist-date {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/*===============================
+=       Footer & Print Button   =
+===============================*/
+.detail-actions {
+  flex: none;
+  padding: 1rem 2rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-print {
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-print:hover {
+  background: #2563eb;
+}
+
+/*===============================
+=       Responsive Preview      =
+===============================*/
+@media (max-width: 600px) {
+  .detail-box {
+    max-width: 95%;
+  }
+  .detail-content {
+    padding: 1rem 1.5rem 0;
+  }
+  .detail-actions {
+    justify-content: center;
+  }
+  .btn-print {
+    width: 100%;
+  }
+}
